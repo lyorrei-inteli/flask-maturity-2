@@ -1,0 +1,391 @@
+_type: export
+__export_format: 4
+__export_date: 2024-04-21T23:40:42.814Z
+__export_source: insomnia.desktop.app:v8.6.1
+resources:
+  - _id: req_d22e05c0c8c1481c898d2cb8c074636b
+    parentId: wrk_34b6c1e44ad140bc85c1d55e544a0001
+    modified: 1713741892211
+    created: 1713741579437
+    url: "{{baseUrl}}/login"
+    name: Login
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"username": "amigao@gmail.com",
+        	"password": "1234"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication: {}
+    metaSortKey: -1713741579437
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: wrk_34b6c1e44ad140bc85c1d55e544a0001
+    parentId: null
+    modified: 1713737158954
+    created: 1713737158954
+    name: fastapi-maturity-2.yaml
+    description: ""
+    scope: design
+    _type: workspace
+  - _id: req_4907a69632744d30871ba06aaf98c4a1
+    parentId: wrk_34b6c1e44ad140bc85c1d55e544a0001
+    modified: 1713741912342
+    created: 1713741906548
+    url: "{{baseUrl}}/users"
+    name: Get users
+    description: ""
+    method: GET
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"username": "amigao@gmail.com",
+        	"password": "1234"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication: {}
+    metaSortKey: -1713741579387
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_b141a4f0181b401f89c13f3eff3b5dd8
+    parentId: wrk_34b6c1e44ad140bc85c1d55e544a0001
+    modified: 1713741942480
+    created: 1713741922861
+    url: "{{baseUrl}}/users"
+    name: Create user
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name": "teste",
+        	"email": "amigao@gmail.com",
+        	"password": "1234"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication: {}
+    metaSortKey: -1713741579337
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_21f569c300774e0491bd4908d71bc10a
+    parentId: wrk_34b6c1e44ad140bc85c1d55e544a0001
+    modified: 1713741997244
+    created: 1713741959116
+    url: "{{baseUrl}}/users/:id"
+    name: Get a user
+    description: ""
+    method: GET
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name": "teste",
+        	"email": "amigao@gmail.com",
+        	"password": "1234"
+        }
+    parameters:
+      - id: pair_f22a62a6149e499686321dead3667c09
+        name: ""
+        value: ""
+        description: ""
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication: {}
+    metaSortKey: -1713741579287
+    isPrivate: false
+    pathParameters:
+      - name: id
+        value: "1"
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_af805153ddd04fe4b7a664ebd5d86439
+    parentId: wrk_34b6c1e44ad140bc85c1d55e544a0001
+    modified: 1713742012051
+    created: 1713742008353
+    url: "{{baseUrl}}/users/:id"
+    name: Update a user
+    description: ""
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name": "teste",
+        	"email": "amigao@gmail.com",
+        	"password": "1234"
+        }
+    parameters:
+      - id: pair_f22a62a6149e499686321dead3667c09
+        name: ""
+        value: ""
+        description: ""
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication: {}
+    metaSortKey: -1713741579237
+    isPrivate: false
+    pathParameters:
+      - name: id
+        value: "1"
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_c9bddc7590714c73a0b3124a9db72408
+    parentId: wrk_34b6c1e44ad140bc85c1d55e544a0001
+    modified: 1713742045230
+    created: 1713742041431
+    url: "{{baseUrl}}/users/:id"
+    name: Delete a user
+    description: ""
+    method: DELETE
+    body:
+      mimeType: application/json
+      text: ""
+    parameters:
+      - id: pair_f22a62a6149e499686321dead3667c09
+        name: ""
+        value: ""
+        description: ""
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication: {}
+    metaSortKey: -1713741579187
+    isPrivate: false
+    pathParameters:
+      - name: id
+        value: "1"
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: env_4ade62e92494c3408efc184c15541e67e89abc01
+    parentId: wrk_34b6c1e44ad140bc85c1d55e544a0001
+    modified: 1713741829541
+    created: 1713737158957
+    name: Base Environment
+    data:
+      baseUrl: http://127.0.0.1:5000
+    dataPropertyOrder:
+      "&":
+        - baseUrl
+    color: null
+    isPrivate: false
+    metaSortKey: 1713737158957
+    _type: environment
+  - _id: jar_4ade62e92494c3408efc184c15541e67e89abc01
+    parentId: wrk_34b6c1e44ad140bc85c1d55e544a0001
+    modified: 1713737158958
+    created: 1713737158958
+    name: Default Jar
+    cookies: []
+    _type: cookie_jar
+  - _id: spc_1bddf4dc67b1464cb4a616e095ae6bab
+    parentId: wrk_34b6c1e44ad140bc85c1d55e544a0001
+    modified: 1713742228366
+    created: 1713737158956
+    fileName: New Document
+    contents: >
+      swagger: "2.0"
+
+      info:
+        description: "This is a simple API documentation for the Flask application using JWT and SQLite."
+        version: "1.0.0"
+        title: "Sample Flask API"
+      host: "localhost:5000"
+
+      basePath: "/"
+
+      schemes:
+
+      - "http"
+
+      paths:
+        /login:
+          post:
+            summary: "Login"
+            description: "Logs in a user with provided credentials."
+            parameters:
+            - in: "body"
+              name: "credentials"
+              required: true
+              schema:
+                type: "object"
+                required:
+                - username
+                - password
+                properties:
+                  username:
+                    type: "string"
+                  password:
+                    type: "string"
+            responses:
+              200:
+                description: "User logged in successfully."
+              401:
+                description: "Invalid credentials."
+        /:
+          get:
+            summary: "Home Page"
+            description: "Returns a simple Hello World message."
+            responses:
+              200:
+                description: "Successful retrieval of message."
+                schema:
+                  type: "string"
+        /users:
+          get:
+            summary: "Fetch Users"
+            description: "Retrieves a list of users."
+            responses:
+              200:
+                description: "List of users fetched successfully."
+                schema:
+                  type: "array"
+                  items:
+                    $ref: '#/definitions/User'
+          post:
+            summary: "Create User"
+            description: "Creates a new user with provided data."
+            parameters:
+            - in: "body"
+              name: "user"
+              required: true
+              schema:
+                $ref: '#/definitions/User'
+            responses:
+              200:
+                description: "User created successfully."
+                schema:
+                  $ref: '#/definitions/User'
+        /users/{id}:
+          get:
+            summary: "Fetch a User"
+            description: "Retrieves a user by ID."
+            parameters:
+            - name: "id"
+              in: "path"
+              required: true
+              type: "integer"
+              description: "ID of the user to fetch."
+            responses:
+              200:
+                description: "User fetched successfully."
+                schema:
+                  $ref: '#/definitions/User'
+          put:
+            summary: "Update User"
+            description: "Updates an existing user with provided data."
+            parameters:
+            - name: "id"
+              in: "path"
+              required: true
+              type: "integer"
+              description: "ID of the user to update."
+            - in: "body"
+              name: "user"
+              required: true
+              schema:
+                $ref: '#/definitions/User'
+            responses:
+              200:
+                description: "User updated successfully."
+                schema:
+                  $ref: '#/definitions/User'
+          delete:
+            summary: "Delete User"
+            description: "Deletes a user by ID."
+            parameters:
+            - name: "id"
+              in: "path"
+              required: true
+              type: "integer"
+              description: "ID of the user to delete."
+            responses:
+              200:
+                description: "User deleted successfully."
+                schema:
+                  type: "object"
+                  properties:
+                    message:
+                      type: "string"
+      definitions:
+        User:
+          type: "object"
+          required:
+          - name
+          - email
+          - password
+          properties:
+            id:
+              type: "integer"
+              format: "int64"
+            name:
+              type: "string"
+            email:
+              type: "string"
+            password:
+              type: "string"
+    contentType: yaml
+    _type: api_spec

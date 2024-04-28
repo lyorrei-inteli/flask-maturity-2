@@ -1,8 +1,8 @@
-# API de Lista de Tarefas
+# API Síncrona
 
 ## Introdução
 
-Este projeto é uma API simples desenvolvida como parte de um exercício acadêmico. Implementa uma API RESTful síncrona usando Flask em Python e inclui autenticação de usuário para gerenciar tarefas.
+Este projeto é uma API simples desenvolvida como parte de um exercício acadêmico. Implementa uma API RESTful síncrona usando Flask em Python e inclui autenticação de usuário.
 
 ## Requisitos
 

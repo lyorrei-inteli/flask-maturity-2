@@ -191,6 +191,123 @@
                     }
                 }
             }
+        },
+        "/tasks": {
+            "get": {
+                "summary": "Fetch tasks",
+                "description": "Retrieves a list of tasks.",
+                "responses": {
+                    "200": {
+                        "description": "List of tasks fetched successfully.",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Task"
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "Create Task",
+                "description": "Creates a new task with provided data.",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "task",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Task"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Task created successfully.",
+                        "schema": {
+                            "$ref": "#/definitions/Task"
+                        }
+                    }
+                }
+            }
+        },
+        "/tasks/{id}": {
+            "get": {
+                "summary": "Fetch a Task",
+                "description": "Retrieves a task by ID.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer",
+                        "description": "ID of the task to fetch."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Task fetched successfully.",
+                        "schema": {
+                            "$ref": "#/definitions/Task"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "summary": "Update Task",
+                "description": "Updates an existing task with provided data.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer",
+                        "description": "ID of the task to update."
+                    },
+                    {
+                        "in": "body",
+                        "name": "task",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Task"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Task updated successfully.",
+                        "schema": {
+                            "$ref": "#/definitions/Task"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete Task",
+                "description": "Deletes a task by ID.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer",
+                        "description": "ID of the task to delete."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Task deleted successfully.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     },
     "definitions": {
@@ -209,6 +326,22 @@
                     "type": "string"
                 },
                 "password": {
+                    "type": "string"
+                }
+            }
+        },
+        "Task": {
+            "type": "object",
+            "required": ["text", "status"],
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "text": {
+                    "type": "string"
+                },
+                "status": {
                     "type": "string"
                 }
             }

@@ -18,3 +18,20 @@ class User(db.Model):
       "name": self.name,
       "email": self.email,
       "password": self.password}
+  
+class Task(db.Model):
+  __tablename__ = 'tasks'
+
+  id = Column(Integer, primary_key=True, autoincrement=True)
+  text = Column(String(50), nullable=False)
+  status = Column(String(50), nullable=False)
+
+  def __repr__(self):
+    return f'<Task:[id:{self.id}, text:{self.text}, status:{self.status}]>'
+  
+  def serialize(self):
+    return {
+      "id": self.id,
+      "text": self.text,
+      "status": self.status,
+     }

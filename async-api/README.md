@@ -1,8 +1,8 @@
-# API Síncrona
+# API Assíncrona
 
 ## Introdução
 
-Este projeto é uma API simples desenvolvida como parte de um exercício acadêmico. Implementa uma API RESTful síncrona usando Flask em Python e inclui autenticação de usuário.
+Este projeto é uma API simples desenvolvida como parte de um exercício acadêmico. Implementa uma API RESTful assíncrona usando Flask em Python e inclui autenticação de usuário.
 
 ## Requisitos
 
@@ -14,7 +14,16 @@ Este projeto é uma API simples desenvolvida como parte de um exercício acadêm
 - Flask-SQLAlchemy
 - SQLite
 
+## Importante
+O que faz essa api ser síncrona é o seguinte código do arquivo `app.py`. Mais especificamente a linha `threaded=True`:
+```
+if __name__ == "__main__":
+    app.run(debug=True, threaded=True, host="0.0.0.0")
+```
+
+
 ## Configuração e Instalação
+### Localmente
 1. Instale as dependências:
    ```bash
    pip install -r requirements.txt
@@ -22,15 +31,28 @@ Este projeto é uma API simples desenvolvida como parte de um exercício acadêm
 
 2. Inicialize o banco de dados:
    ```bash
-   python main.py create_db
+   python3 main.py create_db
    ```
 
-4. Execute a aplicação:
+3. Execute a aplicação:
    ```bash
-   python main.py
+   python3 main.py
    ```
 
    A aplicação estará disponível em `http://127.0.0.1:5000/`.
+
+### Docker
+1. Rode o container docker:
+   ```bash
+   docker compose up
+   ```
+
+A aplicação estará disponível em `http://127.0.0.1:5000/`.
+
+
+### Screenshot de funcionamento da aplicação
+![Alt text](image-1.png)
+
 
 ## Pontos de Extremidade da API
 
@@ -44,6 +66,13 @@ Este projeto é uma API simples desenvolvida como parte de um exercício acadêm
   - `GET /users/{id}`: Obtém um usuário específico.
   - `PUT /users/{id}`: Atualiza um usuário específico.
   - `DELETE /users/{id}`: Deleta um usuário específico.
+- `GET, POST, PUT, DELETE /tasks`: Pontos de extremidade para gerenciamento de tasks.
+  - `GET /tasks`: Lista todos os tasks.
+  - `POST /tasks`: Cria um novo task.
+  - `GET /tasks/{id}`: Obtém um task específico.
+  - `PUT /tasks/{id}`: Atualiza um task específico.
+  - `DELETE /tasks/{id}`: Deleta um task específico.
+
 
 ## Estrutura do Projeto
 
@@ -54,3 +83,8 @@ Este projeto é uma API simples desenvolvida como parte de um exercício acadêm
 ## Informações Adicionais
 
 - Os arquivos YAML do Insomnia e os arquivos JSON/YAML do Swagger estão localizados dentro da pasta `static`.
+
+## Request example
+![Alt text](image.png)
+
+Você pode utilizar o arquivo `static/Insomnia.json` para importar as requisições no Insomnia e testá-las.

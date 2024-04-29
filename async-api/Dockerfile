@@ -13,5 +13,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the content of the local src directory to the working directory
 COPY . .
 
+EXPOSE 5000
+
 # Command to execute when the container starts
 CMD ["python3", "main.py"]

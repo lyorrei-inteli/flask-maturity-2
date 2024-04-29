@@ -6,7 +6,7 @@ from flask_swagger_ui import get_swaggerui_blueprint
 
 from database.database import db
 from flask_cors import CORS
-from routes import routes
+from routes import user, task
 
 app = Flask(__name__, template_folder="templates")
 
@@ -32,7 +32,8 @@ swagger_blueprint = get_swaggerui_blueprint(
 
 # Registering Blueprints
 app.register_blueprint(swagger_blueprint, url_prefix=SWAGGER_URL)
-app.register_blueprint(routes.api_blueprint)
+app.register_blueprint(user.api_blueprint)
+app.register_blueprint(task.api_blueprint)
 
 # Create the database if the command line argument is "create_db"
 if len(sys.argv) > 1 and sys.argv[1] == "create_db":
@@ -43,4 +44,4 @@ if len(sys.argv) > 1 and sys.argv[1] == "create_db":
 
 # Run the application
 if __name__ == "__main__":
-    app.run(debug=True, threaded=False)
+    app.run(debug=True, threaded=True, host="0.0.0.0")

@@ -42,7 +42,11 @@ if __name__ == "__main__":
    A aplicação estará disponível em `http://127.0.0.1:5000/`.
 
 ### Docker
-1. Rode o container docker:
+1. Vá para a root do repositório:
+   ```bash
+   cd ..
+   ```
+2. Rode o container docker:
    ```bash
    docker compose up
    ```

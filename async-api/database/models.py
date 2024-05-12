@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Boolean, Column, Integer, String
 from database.database import db
 
 class User(db.Model):
@@ -24,7 +24,7 @@ class Task(db.Model):
 
   id = Column(Integer, primary_key=True, autoincrement=True)
   text = Column(String(50), nullable=False)
-  status = Column(String(50), nullable=False)
+  status = Column(Boolean, nullable=False)
 
   def __repr__(self):
     return f'<Task:[id:{self.id}, text:{self.text}, status:{self.status}]>'

@@ -1,16 +1,65 @@
-# flutter_application
+# Task Manager App
 
-A new Flutter project.
+Este é um aplicativo Flutter para gerenciamento de tarefas. Ele permite aos usuários criar, editar, deletar e marcar tarefas como completas.
 
-## Getting Started
+## Widgets
 
-This project is a starting point for a Flutter application.
+### `TaskListWidget`
 
-A few resources to get you started if this is your first Flutter project:
+Este widget é a tela principal do aplicativo onde todas as tarefas são listadas.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+#### Funcionalidades:
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- **Listar Tarefas**: Mostra todas as tarefas com o título e status.
+- **Adicionar Tarefa**: Botão para navegar para a tela de criação de tarefas.
+- **Editar Tarefa**: Cada tarefa pode ser editada clicando no ícone de edição.
+- **Deletar Tarefa**: Tarefas podem ser deletadas usando o ícone de lixeira.
+- **Marcar Tarefa como Completa**: Tarefas podem ser marcadas como completas usando o checkbox.
+
+### `TaskEditWidget`
+
+Este widget é usado tanto para adicionar novas tarefas quanto para editar tarefas existentes.
+
+#### Funcionalidades:
+
+- **Criar Tarefa**: Permite inserir os detalhes da tarefa e salvar.
+- **Editar Tarefa**: Carrega os detalhes da tarefa existente para edição.
+- **Salvar Tarefa**: Salva as alterações feitas em uma tarefa ou cria uma nova tarefa no banco de dados.
+
+### Serviços
+
+#### `ApiService`
+
+Esta classe gerencia todas as chamadas de API.
+
+##### Métodos:
+
+- **getTasks()**: Retorna todas as tarefas.
+- **createTask(String text, String status)**: Cria uma nova tarefa.
+- **updateTaskName(int id, String name)**: Atualiza o nome de uma tarefa existente.
+- **updateTaskStatus(int id, bool newStatus)**: Atualiza o status de uma tarefa existente.
+- **deleteTask(int id)**: Deleta uma tarefa.
+
+## Estrutura de Navegação
+
+O aplicativo usa uma navegação baseada em rotas nomeadas para transição entre os widgets `TaskListWidget` e `TaskEditWidget`.
+
+## Dependências
+
+Este aplicativo utiliza o pacote `http` para chamadas de API e `flutter/material.dart` para a UI.
+
+## Configuração e Instalação
+
+Instruções sobre como configurar e instalar o aplicativo.
+
+### Pré-requisitos
+
+- Flutter SDK
+- Android Studio ou Visual Studio Code
+
+### Instalação
+
+1. Clone o repositório.
+2. Abra o diretório do projeto no terminal.
+3. Execute `flutter pub get` para instalar as dependências.
+4. Execute `flutter run` para iniciar o aplicativo no dispositivo ou emulador conectado.

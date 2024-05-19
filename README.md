@@ -108,6 +108,8 @@ O `docker-compose.yml` está configurado para levantar todos os serviços necess
 docker-compose up --build
 ```
 
+A aplicação estará disponível em `http://127.0.0.1`.
+
 Isso iniciará todos os serviços e configurará o Nginx para encaminhar as requisições corretamente para os serviços backend.
 
 ## Demonstração do Projeto

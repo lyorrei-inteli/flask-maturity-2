@@ -112,7 +112,7 @@ Isso iniciará todos os serviços e configurará o Nginx para encaminhar as requ
 
 ## Demonstração do Projeto
 
-Para ver uma demonstração completa do funcionamento deste projeto, clique no link abaixo para acessar o vídeo:
+Para ver uma demonstração completa do funcionamento do gerenciamento de tarefas, clique no link abaixo para acessar o vídeo:
 [Assistir ao Vídeo](https://youtu.be/e7kYtUnUVnM)
 
 ## Tecnologias Utilizadas

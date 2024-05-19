@@ -16,6 +16,27 @@ Este widget é a tela principal do aplicativo onde todas as tarefas são listada
 - **Deletar Tarefa**: Tarefas podem ser deletadas usando o ícone de lixeira.
 - **Marcar Tarefa como Completa**: Tarefas podem ser marcadas como completas usando o checkbox.
 
+### LoginPage
+Este widget é a tela de login do aplicativo, onde os usuários podem inserir suas credenciais para acessar o sistema.
+
+#### Funcionalidades:
+Login: Permite que o usuário insira seu nome de usuário e senha para fazer login.
+Criar Conta: Navega para a página de criação de conta.
+Capturar Imagem: Navega para a página de captura de imagem.
+
+### CreateAccountPage
+Este widget é usado para criar uma nova conta de usuário.
+
+#### Funcionalidades:
+Criar Conta: Permite que o usuário insira um nome de usuário e senha, e confirma a senha antes de criar a conta.
+
+### ImageCapturePage
+Este widget permite ao usuário capturar uma imagem usando a câmera do dispositivo ou selecionar uma imagem da galeria.
+
+#### Funcionalidades:
+Capturar Imagem: Abre a câmera do dispositivo para tirar uma foto.
+Selecionar da Galeria: Abre a galeria de fotos do dispositivo para selecionar uma imagem.
+
 ### `TaskEditWidget`
 
 Este widget é usado tanto para adicionar novas tarefas quanto para editar tarefas existentes.

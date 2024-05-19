@@ -51,7 +51,7 @@ if __name__ == "__main__":
    docker compose up
    ```
 
-A aplicação estará disponível em `http://127.0.0.1:5000/`.
+A aplicação estará disponível em `http://127.0.0.1`.
 
 
 ### Screenshot de funcionamento da aplicação
@@ -60,7 +60,7 @@ A aplicação estará disponível em `http://127.0.0.1:5000/`.
 
 ## Pontos de Extremidade da API
 
-- `POST /login`: Autentica usuários e retorna um JWT.
+- `POST /users/login`: Autentica usuários e retorna um JWT.
 - `GET /user-login`: Página de login.
 - `GET /user-register`: Página de registro.
 - `GET /content`: Página de conteúdo (requer JWT).
@@ -70,13 +70,6 @@ A aplicação estará disponível em `http://127.0.0.1:5000/`.
   - `GET /users/{id}`: Obtém um usuário específico.
   - `PUT /users/{id}`: Atualiza um usuário específico.
   - `DELETE /users/{id}`: Deleta um usuário específico.
-- `GET, POST, PUT, DELETE /tasks`: Pontos de extremidade para gerenciamento de tasks.
-  - `GET /tasks`: Lista todos os tasks.
-  - `POST /tasks`: Cria um novo task.
-  - `GET /tasks/{id}`: Obtém um task específico.
-  - `PUT /tasks/{id}`: Atualiza um task específico.
-  - `DELETE /tasks/{id}`: Deleta um task específico.
-
 
 ## Estrutura do Projeto
 

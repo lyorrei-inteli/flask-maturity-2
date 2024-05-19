@@ -2,11 +2,11 @@ import 'dart:convert';
 import 'package:flutter_application/models/task.dart';
 import 'package:http/http.dart' as http;
 
-class ApiService {
-  final String baseUrl = 'http://192.168.0.25:5000';
+class TasksApiService {
+  final String baseUrl = 'http://192.168.0.109/tasks';
 
   Future<List<Task>> getTasks() async {
-    var url = Uri.parse('$baseUrl/tasks');
+    var url = Uri.parse('$baseUrl');
     var response = await http.get(url);
 
     if (response.statusCode == 200) {
@@ -18,7 +18,7 @@ class ApiService {
   }
 
   Future<Task> createTask(String text) async {
-    var url = Uri.parse('$baseUrl/tasks');
+    var url = Uri.parse('$baseUrl');
     var response = await http.post(
       url,
       headers: {
@@ -38,7 +38,7 @@ class ApiService {
   }
 
   Future<void> updateTaskName(int taskId, String name) async {
-    var url = Uri.parse('$baseUrl/tasks/$taskId');
+    var url = Uri.parse('$baseUrl/$taskId');
     var response = await http.put(
       url,
       headers: {
@@ -55,7 +55,7 @@ class ApiService {
   }
 
   Future<void> updateTaskStatus(int taskId, bool newStatus) async {
-    var url = Uri.parse('$baseUrl/tasks/$taskId');
+    var url = Uri.parse('$baseUrl/$taskId');
     var response = await http.put(
       url,
       headers: {
@@ -72,7 +72,7 @@ class ApiService {
   }
 
   Future<void> deleteTask(int taskId) async {
-    var url = Uri.parse('$baseUrl/tasks/$taskId');
+    var url = Uri.parse('$baseUrl/$taskId');
     var response = await http.delete(
       url,
       headers: {

@@ -1,15 +1,53 @@
 version: '3.8'
 
 services:
-  async_api:
-    build: ./async-api
+  tasks-api:
+    build: ./tasks-api
     ports:
       - "5000:5000"
     environment:
       - FLASK_ENV=development
-  sync_api:
-    build: ./sync-api
+    depends_on:
+      db:
+        condition: service_healthy
+
+  users-api:
+    build: ./users-api
     ports:
       - "5001:5001"
     environment:
       - FLASK_ENV=development
+    depends_on:
+      db:
+        condition: service_healthy
+  
+  db:
+    image: postgres:latest
+    container_name: postgres_db
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: app
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - tasks-api
+      - users-api
+
+volumes:
+  postgres_data:

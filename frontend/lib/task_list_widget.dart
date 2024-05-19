@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application/services/api_service.dart';
+import 'package:flutter_application/services/tasks_api_service.dart';
 import 'package:flutter_application/models/task.dart';
 import 'package:flutter_application/task_edit_widget.dart';
 
@@ -20,12 +20,17 @@ class _TaskListWidgetState extends State<TaskListWidget> {
   }
 
   void loadTasks() async {
-    tasks = await ApiService().getTasks();
+    try {
+    tasks = await TasksApiService().getTasks();
+
+    } catch (e) {
+      print('Failed to load tasks: $e');
+    }
     setState(() {});
   }
 
   void _toggleTaskStatus(int id, bool status) async {
-    await ApiService().updateTaskStatus(id, status);
+    await TasksApiService().updateTaskStatus(id, status);
     loadTasks();
   }
 
@@ -37,7 +42,7 @@ class _TaskListWidgetState extends State<TaskListWidget> {
   }
 
   void _deleteTask(int id) async {
-    await ApiService().deleteTask(id);
+    await TasksApiService().deleteTask(id);
     loadTasks(); // Reloads the list after deleting a task
   }
 

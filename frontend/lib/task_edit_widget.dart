@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application/services/api_service.dart';
+import 'package:flutter_application/services/tasks_api_service.dart';
 import 'package:flutter_application/models/task.dart';
 
 class TaskEditWidget extends StatefulWidget {
@@ -29,10 +29,10 @@ class _TaskEditWidgetState extends State<TaskEditWidget> {
       print(_text);
       print(_status);
       if (widget.task == null) {
-        await ApiService().createTask(_text);
+        await TasksApiService().createTask(_text);
       } 
       else {
-        await ApiService().updateTaskName(widget.task!.id, _text);
+        await TasksApiService().updateTaskName(widget.task!.id, _text);
       }
       Navigator.of(context).pop();
     }

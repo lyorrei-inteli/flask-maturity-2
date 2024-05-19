@@ -1,9 +1,10 @@
 import requests as http_request
-from flask import Blueprint, jsonify, render_template, request, make_response
+from flask import Blueprint, abort, jsonify, render_template, request, make_response
 from flask_jwt_extended import create_access_token, jwt_required, set_access_cookies
 
 from database.database import db
 from database.models import User
+import logging
 
 api_blueprint = Blueprint("api", __name__)
 
@@ -41,6 +42,8 @@ def get_user(id):
 
 @api_blueprint.route("/users", methods=["POST"])
 def create_user():
+    logging.info("Create user request")
+
     data = request.json
     user = User(name=data["name"], email=data["email"], password=data["password"])
     db.session.add(user)
@@ -67,21 +70,21 @@ def delete_user(id):
     return jsonify(user.serialize())
 
 
-@api_blueprint.route("/login", methods=["POST"])
+@api_blueprint.route("/users/login", methods=["POST"])
 def login():
-    username = request.form.get("username", None)
-    password = request.form.get("password", None)
-    if username is None or password is None:
-        return render_template("error.html", message="Bad username or password")
+    logging.info("Login request")
+    data = request.json
+    
     try:
-        token_data = create_token(username, password)
+        token_data = create_token(data["username"], data["password"])
         token = token_data.get("token")
     except Exception as e:
-        return render_template("error.html", message="Bad username or password")
-    response = make_response(render_template("content.html"))
+        return abort(500)
+    response = jsonify({
+        "message": "Login Successful"
+    })
     set_access_cookies(response, token)
     return response
-
 
 @api_blueprint.route("/user-login", methods=["GET"])
 def user_login():

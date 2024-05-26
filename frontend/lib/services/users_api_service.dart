@@ -3,10 +3,11 @@ import 'package:flutter_application/models/user.dart';
 import 'package:http/http.dart' as http;
 
 class UsersApiService {
-  final String baseUrl = 'http://192.168.0.109/users';
+  final String baseUrl = 'http://192.168.205.134/users';
 
   Future<Map<String, String>> login(String username, String password) async {
     var url = Uri.parse('$baseUrl/login');
+    print(url);
     var response = await http.post(
       url,
       headers: {

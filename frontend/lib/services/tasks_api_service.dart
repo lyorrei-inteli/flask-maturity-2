@@ -1,9 +1,10 @@
 import 'dart:convert';
+import 'dart:io';
 import 'package:flutter_application/models/task.dart';
 import 'package:http/http.dart' as http;
 
 class TasksApiService {
-  final String baseUrl = 'http://192.168.0.109/tasks';
+  final String baseUrl = 'http://192.168.205.134/tasks';
 
   Future<List<Task>> getTasks() async {
     var url = Uri.parse('$baseUrl');
@@ -85,4 +86,23 @@ class TasksApiService {
     }
   }
 
+  Future<File> removeBackground(File imageFile) async {
+    print(baseUrl);
+    final String base64Image = base64Encode(await imageFile.readAsBytes());
+    print(base64Image);
+    final String apiUrl = '$baseUrl/image/remove-background';
+    var response = await http.post(
+      Uri.parse(apiUrl),
+      headers: {'Content-Type': 'application/json'},
+      body: json.encode({'image': base64Image}),
+    );
+
+    print(response);
+
+    if (response.statusCode == 200) {
+      return File.fromRawPath(response.bodyBytes);
+    } else {
+      throw Exception('Failed to remove background: ${response.body}');
+    }
+  }
 }

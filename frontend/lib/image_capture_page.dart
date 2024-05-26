@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
+import 'package:flutter_application/services/tasks_api_service.dart';  // Adjust the import path based on your project structure
 
 class ImageCapturePage extends StatefulWidget {
   const ImageCapturePage({super.key});
@@ -11,6 +12,7 @@ class ImageCapturePage extends StatefulWidget {
 
 class _ImageCapturePageState extends State<ImageCapturePage> {
   File? _image;
+  final TasksApiService _apiService = TasksApiService();
 
   Future<void> _pickImage(ImageSource source) async {
     final ImagePicker picker = ImagePicker();
@@ -19,6 +21,23 @@ class _ImageCapturePageState extends State<ImageCapturePage> {
       setState(() {
         _image = File(image.path);
       });
+    }
+  }
+
+  Future<void> _removeBackground(context) async {
+    try {
+      final File processedImage = await _apiService.removeBackground(_image!);
+      setState(() {
+        _image = processedImage;
+      });
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Fundo removido com sucesso'))
+      );
+    } catch (e) {
+      print(e);
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(e.toString()))
+      );
     }
   }
 
@@ -44,6 +63,11 @@ class _ImageCapturePageState extends State<ImageCapturePage> {
             ElevatedButton(
               onPressed: () => _pickImage(ImageSource.gallery),
               child: const Text('Selecionar da Galeria'),
+            ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () => _removeBackground(context),
+              child: const Text('Remover Fundo'),
             ),
           ],
         ),

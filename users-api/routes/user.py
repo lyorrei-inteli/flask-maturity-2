@@ -100,3 +100,4 @@ def user_register():
 @jwt_required()
 def content():
     return render_template("content.html")
+

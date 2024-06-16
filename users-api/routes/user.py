@@ -6,6 +6,8 @@ from database.database import db
 from database.models import User
 import logging
 
+logger = logging.getLogger("root")
+
 api_blueprint = Blueprint("api", __name__)
 
 
@@ -27,6 +29,7 @@ def hello_world():
 
 @api_blueprint.route("/users", methods=["GET"])
 def get_users():
+    logger.info("Get users request")
     users = User.query.all()
     return_users = []
     for user in users:
@@ -36,13 +39,16 @@ def get_users():
 
 @api_blueprint.route("/users/<int:id>", methods=["GET"])
 def get_user(id):
+    logger.info("Get user request")
     user = User.query.get(id)
+    if user is None:
+        return abort(404)
     return jsonify(user.serialize())
 
 
 @api_blueprint.route("/users", methods=["POST"])
 def create_user():
-    logging.info("Create user request")
+    logger.info("Create user request")
 
     data = request.json
     user = User(name=data["name"], email=data["email"], password=data["password"])
@@ -53,8 +59,11 @@ def create_user():
 
 @api_blueprint.route("/users/<int:id>", methods=["PUT"])
 def update_user(id):
+    logger.info("Update user request")
     data = request.json
     user = User.query.get(id)
+    if user is None:
+        return abort(404)
     user.name = data["name"]
     user.email = data["email"]
     user.password = data["password"]
@@ -64,7 +73,10 @@ def update_user(id):
 
 @api_blueprint.route("/users/<int:id>", methods=["DELETE"])
 def delete_user(id):
+    logger.info("Delete user request")
     user = User.query.get(id)
+    if user is None:
+        return abort(404)
     db.session.delete(user)
     db.session.commit()
     return jsonify(user.serialize())
@@ -72,19 +84,18 @@ def delete_user(id):
 
 @api_blueprint.route("/users/login", methods=["POST"])
 def login():
-    logging.info("Login request")
+    logger.info("Login request")
     data = request.json
-    
+
     try:
         token_data = create_token(data["username"], data["password"])
         token = token_data.get("token")
     except Exception as e:
         return abort(500)
-    response = jsonify({
-        "message": "Login Successful"
-    })
+    response = jsonify({"message": "Login Successful"})
     set_access_cookies(response, token)
     return response
+
 
 @api_blueprint.route("/user-login", methods=["GET"])
 def user_login():
@@ -100,4 +111,3 @@ def user_register():
 @jwt_required()
 def content():
     return render_template("content.html")
-

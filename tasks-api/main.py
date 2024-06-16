@@ -1,3 +1,4 @@
+import logging
 import os
 import sys
 
@@ -9,7 +10,22 @@ from database.database import db
 from flask_cors import CORS
 from routes import task
 from dotenv import load_dotenv
+
 load_dotenv()
+
+log_format = "%(asctime)s:%(levelname)s:%(filename)s:%(message)s"
+
+if not os.path.exists("/var/log/tasks-api"):
+    os.makedirs("/var/log/tasks-api")
+
+logging.basicConfig(
+    filename="/var/log/tasks-api/app.log",
+    filemode="w",
+    level=logging.DEBUG,
+    format=log_format,
+)
+
+logger = logging.getLogger("root")
 
 app = Flask(__name__, template_folder="templates")
 

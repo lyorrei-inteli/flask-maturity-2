@@ -1,0 +1,19 @@
+filebeat.inputs:
+  - type: log
+    enabled: true
+    paths:
+      - /var/log/nginx/*.log
+      - /var/log/users-api/*.log
+      - /var/log/tasks-api/*.log
+
+setup.kibana:
+  host: "http://kibana:5601"
+  username: "elastic"
+  password: "changeme"
+
+setup.dashboards.enabled: true
+
+output.elasticsearch:
+  hosts: ["http://elasticsearch:9200"]
+  username: "elastic"
+  password: "changeme"

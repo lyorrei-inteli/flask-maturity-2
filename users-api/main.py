@@ -10,16 +10,22 @@ from database.database import db
 from flask_cors import CORS
 from routes import user
 from dotenv import load_dotenv
+
 load_dotenv()
 
-log_format = '%(asctime)s:%(levelname)s:%(filename)s:%(message)s'
+log_format = "%(asctime)s:%(levelname)s:%(filename)s:%(message)s"
 
-logging.basicConfig(filename='logs.log',
-                    filemode='w',
-                    level=logging.DEBUG,
-                    format=log_format)
+if not os.path.exists("/var/log/users-api"):
+    os.makedirs("/var/log/users-api")
 
-logger = logging.getLogger('root')
+logging.basicConfig(
+    filename="/var/log/users-api/app.log",
+    filemode="w",
+    level=logging.DEBUG,
+    format=log_format,
+)
+
+logger = logging.getLogger("root")
 
 app = Flask(__name__, template_folder="templates")
 

@@ -119,8 +119,8 @@ http {
     - `proxy_pass http://users-api`: Redireciona as requisições para o serviço `users-api`.
     - `proxy_set_header`: Define cabeçalhos adicionais para passar informações do cliente original para os servidores backend.
 
-7. **Bloco `location /events`**:
-    - Captura todas as requisições que começam com `/events` e as encaminha para o grupo `events-api`.
+7. **Bloco `location /event`**:
+    - Captura todas as requisições que começam com `/event` e as encaminha para o grupo `events-api`.
     - `proxy_pass http://events-api`: Redireciona as requisições para o serviço `events-api`.
     - `proxy_set_header`: Define cabeçalhos adicionais para passar informações do cliente original para os servidores backend.
 

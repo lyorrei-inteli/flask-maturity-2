@@ -1,6 +1,6 @@
 # Aplicativo de Gerenciamento de Tarefas com Flutter e Flask
 
-Este repositório contém três projetos principais: uma API backend assíncrona construída com Flask para gerenciar tarefas, uma API backend assíncrona construída com Flask para gerenciar usuários, uma API backend construída com Node.js para gerenciar eventos e um frontend desenvolvido com Flutter para interagir com as APIs.
+Este repositório contém quatro projetos principais: uma API backend assíncrona construída com Flask para gerenciar tarefas, uma API backend assíncrona construída com Flask para gerenciar usuários, uma API backend construída com Node.js para gerenciar eventos e um frontend desenvolvido com Flutter para interagir com as APIs.
 
 ## Estrutura do Repositório
 
